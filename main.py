@@ -12,8 +12,8 @@ seaborn.set_theme(style = "white", palette = None)
 color_pal = plt.rcParams["axes.prop_cycle"].by_key()["color"]
 color_cycle = cycle(plt.rcParams["axes.prop_cycle"].by_key()["color"])
 
-audioSignal, sampleRate = librosa.load(r"C:\Users\ganst\Music\Investigación\Papel celulosa\5x5cm\Papel_celulosa_5x5cm_usos_0_distancia_10cm_192000Hz.wav")
-audioSignal2, sampleRate2 = librosa.load(r"C:\Users\ganst\Music\Investigación\Papel celulosa\20x20cm\Papel_celulosa_20x20cm_usos_0_distancia_10cm_192000Hz.wav")
+audioSignal, sampleRate = librosa.load(r"/home/nico/Música/Investigación/Papel celulosa/5x5cm/Papel_celulosa_5x5cm_usos_0_distancia_10cm_192000Hz.wav")
+audioSignal2, sampleRate2 = librosa.load(r"/home/nico/Música/Investigación/Papel celulosa/5x5cm/Papel_celulosa_5x5cm_usos_0_distancia_10cm_192000Hz.wav")
 
 print(audioSignal)
 print(audioSignal.shape)
@@ -73,4 +73,4 @@ frechet = FrechetAudioDistance(
     enable_fusion = False,            # for CLAP only
 )
 
-print(frechet.score("C:/Users/ganst/Music/Investigación/audio1", "C:/Users/ganst/Music/Investigación/audio2", dtype = "float32"))
+print(frechet.score("/home/nico/GitHub/librosaTests/audioPrueba1", "/home/nico/GitHub/librosaTests/audioPrueba2", dtype = "float32"))
