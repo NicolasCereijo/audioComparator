@@ -18,13 +18,14 @@ frechet = FrechetAudioDistance(
     verbose=False
 )
 
-referenceFiles = glob.glob("/home/nico/GitHub/audioComparator/referenceFiles/*.wav")
-fileToCompare = glob.glob("/home/nico/GitHub/audioComparator/fileToCompare/*.wav")
+referenceFilesPath = "/home/nico/GitHub/audioComparator/referenceFiles/"
+fileToComparePath = "/home/nico/GitHub/audioComparator/fileToCompare/"
+referenceFiles = glob.glob(referenceFilesPath + "*.wav")
+fileToCompare = glob.glob(fileToComparePath + "*.wav")
 audioSignal1, sampleRate1 = librosa.load(referenceFiles[0])
 audioSignal2, sampleRate2 = librosa.load(fileToCompare[0])
 
-print("Frechet distance: ", frechet.score("/home/nico/GitHub/audioComparator/referenceFiles",
-                                          "/home/nico/GitHub/audioComparator/fileToCompare", dtype="float32"))
+print("Frechet distance: ", frechet.score(referenceFilesPath, fileToComparePath, dtype="float32"))
 print("Sample rate model: ", frechet.sample_rate)
 print("Sample rate audio 1: ", sampleRate1)
 print("Sample rate audio 2: ", sampleRate2)
