@@ -13,7 +13,7 @@ color_pal = plt.rcParams["axes.prop_cycle"].by_key()["color"]
 color_cycle = cycle(plt.rcParams["axes.prop_cycle"].by_key()["color"])
 
 audioSignal, sampleRate = librosa.load(r"/home/nico/Música/Investigación/Papel celulosa/5x5cm/Papel_celulosa_5x5cm_usos_0_distancia_10cm_192000Hz.wav")
-audioSignal2, sampleRate2 = librosa.load(r"/home/nico/Música/Investigación/Papel celulosa/5x5cm/Papel_celulosa_5x5cm_usos_0_distancia_10cm_192000Hz.wav")
+audioSignal2, sampleRate2 = librosa.load(r"/home/nico/Música/Investigación/Papel celulosa/20x20cm/Papel_celulosa_20x20cm_usos_3_distancia_100cm_192000Hz.wav")
 
 print(audioSignal)
 print(audioSignal.shape)
@@ -48,14 +48,6 @@ axes2.set_title('Ejemplo de espectrograma Mel', fontsize = 20)
 figure2.colorbar(image2, ax = axes2, format = f'%0.2f')
 plt.show()
 
-# to use `vggish`
-frechet = FrechetAudioDistance(
-    model_name = "vggish",
-    sample_rate = 16000,
-    use_pca = False,
-    use_activation = False,
-    verbose = False
-)
 # to use `PANN`
 frechet = FrechetAudioDistance(
     model_name = "pann",
@@ -64,13 +56,5 @@ frechet = FrechetAudioDistance(
     use_activation = False,
     verbose = False
 )
-# to use `CLAP`
-frechet = FrechetAudioDistance(
-    model_name = "clap",
-    sample_rate = 48000,
-    submodel_name = "630k-audioset",  # for CLAP only
-    verbose = False,
-    enable_fusion = False,            # for CLAP only
-)
 
-print(frechet.score("/home/nico/GitHub/librosaTests/audioPrueba1", "/home/nico/GitHub/librosaTests/audioPrueba2", dtype = "float32"))
+print(frechet.score("/home/nico/GitHub/audioComparator/audioPrueba1", "/home/nico/GitHub/audioComparator/audioPrueba2", dtype = "float32"))
