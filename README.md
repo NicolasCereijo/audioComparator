@@ -9,5 +9,5 @@
   El modelo realiza una comparación del audio refenrecia con el audio a comparar y devuelve un resultado entre 0 y 1, siendo 0 para audios completamente iguales y 1 para audios completamente diferentes.
   El programa solo utiliza un audio como referencia, pero las listas implementadas permiten ampliarlo para hacer multitud de comparaciones y una media global.</h3>
 <br/>
-- 📝 Library [frechet_audio_distance](https://github.com/gudgud96/frechet-audio-distance)
+- 📝 Library [frechet_audio_distance](https://github.com/gudgud96/frechet-audio-distance)<br/>
 - 📝 Model documentation [PANN](https://arxiv.org/abs/1912.10211)
