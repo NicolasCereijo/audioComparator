@@ -10,4 +10,4 @@
   El programa solo utiliza un audio como referencia, pero las listas implementadas permiten ampliarlo para hacer multitud de comparaciones y una media global.</h3>
 <br/>
 - 📝 Library <a href="https://github.com/gudgud96/frechet-audio-distance">frechet_audio_distance</a><br/>
-- 📝 Model documentation [PANN](https://arxiv.org/abs/1912.10211)
+- 📝 Model documentation <a href="https://arxiv.org/abs/1912.10211">PANN</a>
