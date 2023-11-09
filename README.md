@@ -6,7 +6,7 @@
 <br/>
 <h3 align="left">🈳 🇪🇦 Este repositorio utiliza la librería "frechet_audio_distance" (enlace más abajo) para realizar comparaciones entre ficheros de audio ".wav".
   Dicha librería implementa tres modelos diferentes para realizar los cálculos, VGGish, PANN y CLAP, siendo el segundo el utilizado en este programa.
-  El modelo realiza una comparación del audio refenrecia con el audio a comparar y devuelve un resultado entre 0 y 1, siendo 0 para audios completamente iguales y 1 para audios completamente diferentes.
+  El modelo realiza una comparación del audio referencia con el audio a comparar y devuelve un resultado entre 0 y 1, siendo 0 para audios completamente iguales y 1 para audios completamente diferentes.
   El programa solo utiliza un audio como referencia, pero las listas implementadas permiten ampliarlo para hacer multitud de comparaciones y una media global.</h3>
 <br/>
 - 📝 Library <a href="https://github.com/gudgud96/frechet-audio-distance">frechet_audio_distance</a><br/>
