@@ -10,5 +10,5 @@
   El programa solo utiliza un audio como referencia, pero las listas implementadas permiten ampliarlo para hacer multitud de comparaciones y una media global.
 <br/><br/>
 - 📝 Library <a href="https://github.com/gudgud96/frechet-audio-distance">frechet_audio_distance</a><br/>
-- 📝 Model documentation <a href="https://arxiv.org/abs/1912.10211">PANN</a>
+- 📝 Model documentation <a href="https://arxiv.org/abs/1912.10211">PANN</a><br/>
 - 📝 Model repository <a href="https://github.com/qiuqiangkong/audioset_tagging_cnn">PANN</a>
