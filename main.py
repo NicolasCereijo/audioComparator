@@ -103,7 +103,6 @@ def main():
 
     sns.set_theme(style="white", palette=None)
     color_pal = plt.rcParams["axes.prop_cycle"].by_key()["color"]
-    color_cycle = cycle(plt.rcParams["axes.prop_cycle"].by_key()["color"])
 
     # Compare MFCC and print the similarity percentage
     similarity_percentage = compare_mfcc(audio_signal1, audio_signal2, sample_rate1, sample_rate2)
