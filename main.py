@@ -1,6 +1,4 @@
 import glob
-from itertools import cycle
-
 import librosa
 import pandas as pd
 import numpy as np
