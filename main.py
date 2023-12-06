@@ -53,15 +53,15 @@ def compare_mfcc(audio_signal1, audio_signal2, sample_rate1, sample_rate2):
     return similarity_percentage
 
 
-def calculate_spectrogram(audio_signal, sample_rate):
+def calculate_spectrogram(audio_signal):
     spectrogram = np.abs(librosa.stft(audio_signal))
     return spectrogram
 
 
-def compare_spectrograms(audio_signal1, audio_signal2, sample_rate1, sample_rate2):
+def compare_spectrograms(audio_signal1, audio_signal2):
     # Calculate the spectrograms
-    spectrogram1 = calculate_spectrogram(audio_signal1, sample_rate1)
-    spectrogram2 = calculate_spectrogram(audio_signal2, sample_rate2)
+    spectrogram1 = calculate_spectrogram(audio_signal1)
+    spectrogram2 = calculate_spectrogram(audio_signal2)
 
     # Ensure that both spectrograms have the same dimensions
     min_frames = min(spectrogram1.shape[1], spectrogram2.shape[1])
@@ -107,7 +107,7 @@ def main():
     print("Similarity Percentage (MFCC): {:.2f}%".format(similarity_percentage))
 
     # Compare Spectrograms and print the similarity percentage
-    similarity_percentage_spectrograms = compare_spectrograms(audio_signal1, audio_signal2, sample_rate1, sample_rate2)
+    similarity_percentage_spectrograms = compare_spectrograms(audio_signal1, audio_signal2)
     print("Similarity Percentage (Spectrograms): {:.2f}%".format(similarity_percentage_spectrograms))
 
     fig, axs = plt.subplots(2, 2, figsize=(12, 8))
