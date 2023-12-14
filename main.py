@@ -23,6 +23,7 @@ reference_path = "referenceFiles/"
 compare_path = "fileToCompare/"
 reference_files = glob.glob(reference_path + "*.wav")
 compare_files = glob.glob(compare_path + "*.wav")
+n_fft = 1024  # Fourier transform window size
 
 
 def load_audio(file_path):
@@ -30,8 +31,27 @@ def load_audio(file_path):
     return audio_signal, sample_rate
 
 
+def split_audio_by_time(audio, samplerate, seconds_per_segment):
+    segments = []
+    total_duration = librosa.get_duration(y=audio)
+    start_time = 0
+
+    while start_time < total_duration:
+        end_time = min(start_time + seconds_per_segment, total_duration)
+
+        # Convert time to sample indices
+        start_index = int(start_time * samplerate)
+        end_index = int(end_time * samplerate)
+
+        segment = audio[start_index:end_index]
+        segments.append(segment)
+        start_time += seconds_per_segment
+
+    return segments
+
+
 def calculate_mfcc(audio_signal, sample_rate):
-    mfcc = librosa.feature.mfcc(y=audio_signal, sr=sample_rate, n_mfcc=20)
+    mfcc = librosa.feature.mfcc(y=audio_signal, sr=sample_rate, n_mfcc=20, n_fft=n_fft)
     return mfcc
 
 
@@ -54,7 +74,7 @@ def compare_mfcc(audio_signal1, audio_signal2, sample_rate1, sample_rate2):
 
 
 def calculate_spectrogram(audio_signal):
-    spectrogram = np.abs(librosa.stft(audio_signal))
+    spectrogram = np.abs(librosa.stft(audio_signal, n_fft=n_fft))
     return spectrogram
 
 
@@ -102,9 +122,10 @@ def main():
     sns.set_theme(style="white", palette=None)
     color_pal = plt.rcParams["axes.prop_cycle"].by_key()["color"]
 
+    # Overall comparison, MFCC and spectrograms
     # Compare MFCC and print the similarity percentage
-    similarity_percentage = compare_mfcc(audio_signal1, audio_signal2, sample_rate1, sample_rate2)
-    print("Similarity Percentage (MFCC): {:.2f}%".format(similarity_percentage))
+    similarity_percentage_mfcc = compare_mfcc(audio_signal1, audio_signal2, sample_rate1, sample_rate2)
+    print("Similarity Percentage (MFCC): {:.2f}%".format(similarity_percentage_mfcc))
 
     # Compare Spectrograms and print the similarity percentage
     similarity_percentage_spectrograms = compare_spectrograms(audio_signal1, audio_signal2)
@@ -128,6 +149,28 @@ def main():
     axs[0, 0].legend()
     plt.tight_layout()
     plt.show()
+
+    # Split comparison, MFCC and spectrograms
+    segments_audio1 = split_audio_by_time(audio_signal1, sample_rate1, 5)
+    segments_audio2 = split_audio_by_time(audio_signal2, sample_rate2, 5)
+    split_comparisons = []
+
+    if len(segments_audio1) > len(segments_audio2):
+        segments_audio1 = segments_audio1[:len(segments_audio2)]
+    elif len(segments_audio1) < len(segments_audio2):
+        segments_audio2 = segments_audio2[:len(segments_audio1)]
+
+    for i in range(len(segments_audio1)):
+        row = []
+
+        for j in range(len(segments_audio1)):
+            comparison = [compare_mfcc(segments_audio1[i], segments_audio2[j], sample_rate1, sample_rate2),
+                          compare_spectrograms(segments_audio1[i], segments_audio2[j])]
+
+            row.append(comparison)
+        split_comparisons.append(row)
+
+    print(split_comparisons)
 
 
 if __name__ == "__main__":
