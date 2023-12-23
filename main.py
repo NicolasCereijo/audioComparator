@@ -155,15 +155,14 @@ def main():
     segments_audio2 = split_audio_by_time(audio_signal2, sample_rate2, 5)
     split_comparisons = []
 
-    if len(segments_audio1) > len(segments_audio2):
-        segments_audio1 = segments_audio1[:len(segments_audio2)]
-    elif len(segments_audio1) < len(segments_audio2):
-        segments_audio2 = segments_audio2[:len(segments_audio1)]
+    min_length = min(len(segments_audio1), len(segments_audio2))
+    segments_audio1 = segments_audio1[:min_length]
+    segments_audio2 = segments_audio2[:min_length]
 
-    for i in range(len(segments_audio1)):
+    for i in range(min_length):
         row = []
 
-        for j in range(len(segments_audio1)):
+        for j in range(min_length):
             comparison = [compare_mfcc(segments_audio1[i], segments_audio2[j], sample_rate1, sample_rate2),
                           compare_spectrograms(segments_audio1[i], segments_audio2[j])]
 
