@@ -12,3 +12,7 @@
 - 📝 Library <a href="https://github.com/gudgud96/frechet-audio-distance">frechet_audio_distance</a><br/>
 - 📝 Model documentation <a href="https://arxiv.org/abs/1912.10211">PANN</a><br/>
 - 📝 Model repository <a href="https://github.com/qiuqiangkong/audioset_tagging_cnn">PANN</a>
+<br/><br/>
+<img src="images/Example_1.png" title="Example 1"></img>
+<br/><br/>
+<img src="images/Example_2.png" title="Example 2"></img>
